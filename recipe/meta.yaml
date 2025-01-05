@@ -10,7 +10,7 @@ source:
   sha256: 4ab95381b33bdb06cdf8a426c6e9a5117c26307e1ee7ec10b1ac018791db20e6
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - geehydro=geehydro.cli:main
   noarch: python
@@ -19,14 +19,16 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
     - click
     - earthengine-api
     - folium
-    - python
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - geehydro
   commands:
